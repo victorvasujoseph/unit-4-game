@@ -1,3 +1,16 @@
 body{
-    background-image: url('../images/wallpaper-1.jpg');
+    background-image: url('../images/battle-5.jpg');
+    font-family: 'Shadows Into Light', cursive;
 }
+
+img{
+    width: 150px;
+    height:200px;
+    cursor:pointer; 
+}
+
+.divider {
+    height: 20rem;
+}
+
+
