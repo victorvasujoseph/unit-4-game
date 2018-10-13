@@ -11,90 +11,127 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head> 
     <body>
-    <div class="container-fluid">
-            <div class="row text-warning">
-                    <div class="col-6 col-md-3 col-xl-3 col-lg-3 border">
-                        <div class="row">
-                                <div class="col border">
-                                    <img src="assets/images/joker-2.png">
-                                </div>
-                                <div class="col">
-                                        <div class="row">
-                                            <div class="col text-center">Health : </div>
-                                            <div class="col">100</div>
-                                        </div>
-                                        <div class="row">
-                                                <div class="col text-center">Wins : </div>
-                                                <div class="col">0</div>
-                                        </div>
-                                        <div class="row">
-                                                <div class="col">Power : </div>
-                                                <div class="col">60%</div>
-                                        </div>
-                                </div> 
-                        </div>
-                        
-                    </div>
-
-                    <div class="col-6 col-md-3 col-xl-3 col-lg-3">
-                        <img src="assets/images/wolverine-1.png">
-                    </div>
-                    <div class="col-6 col-md-3 col-xl-3 col-lg-3">
-                        <img src="assets/images/marvel-vector-villain-3.png ">
-                    </div>
-                    <div class="col-6 col-md-3 col-xl-3 col-lg-3">
-                            <img src="assets/images/darth-3.png">
-                    </div>
-        </div>
         <!--Players-->
-        <div class="row text-warning">
-            <div class="col-6 col-md-3 col-xl-3 col-lg-3 border">
-                <div class="row">
-                        <div class="col border">
-                            <img src="assets/images/superman-20.png">
+        <div class="container-fluid div-height ">
+                <div class="row div-height">
+                        <div class="col-2"></div>
+                        <div class="col-2"></div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div id="game-commentary" class="row text-center text-warning"></div>
+                        <div class="col-2"></div>
+                        <div class="col-2"></div>
+                </div>  
+        </div>
+        <div class="container-fluid">
+        <div class="row">
+            <div id="container-1" class="col-6 col-md-3 col-xl-3 col-lg-3">
+                <div id="superman-container" class="row">
+                        <div id="div-superman-img" class="col">
+                            <img id="hero-superman" src="assets/images/superman-20.png">
                         </div>
-                        <div class="col">
-                                <div class="row">
-                                    <div class="col text-center">Health : </div>
-                                    <div class="col">100</div>
+                        <div id="superman-stats" class="col">
+                                <div class="row text-center text-warning">
+                                    <div id="superman-health-label" class="col">Health : </div>
+                                    <div id="superman-health-value" class="col">0</div>
                                 </div>
-                                <div class="row">
-                                        <div class="col text-center">Wins : </div>
-                                        <div class="col">0</div>
+                                <div class="row text-center text-warning">
+                                        <div id="superman-attackpower-label" class="col">Wins : </div>
+                                        <div id="superman-attackpower-value" class="col">0</div>
                                 </div>
-                                <div class="row">
-                                        <div class="col">Power : </div>
-                                        <div class="col">60%</div>
+                                <div class="row text-center text-warning">
+                                        <div id="superman-damage-label" class="col">Power : </div>
+                                        <div id="superman-damage-value" class="col">0</div>
                                 </div>
                         </div> 
                 </div>
-                
             </div>
-            <div class="col-6 col-md-3 col-xl-3 col-lg-3">
-                <img src="assets/images/deadpool-5.png">
+            <div id="container-2" class="col-6 col-md-3 col-xl-3 col-lg-3">
+                    <div id="deadpool-container" class="row">
+                            <div id="div-deadpool-img" class="col">
+                                <img id="hero-deadpool" src="assets/images/deadpool-5.png">
+                            </div>
+                            <div id="deadpool-stats" class="col">
+                                    <div class="row text-center text-warning">
+                                        <div class="col text-center">Health : </div>
+                                        <div class="col">100</div>
+                                    </div>
+                                    <div class="row text-center text-warning">
+                                            <div class="col text-center">Wins : </div>
+                                            <div class="col">0</div>
+                                    </div>
+                                    <div class="row text-center text-warning">
+                                            <div class="col">Power : </div>
+                                            <div class="col">60%</div>
+                                    </div>
+                            </div> 
+                    </div>
             </div>
-            <div class="col-6 col-md-3 col-xl-3 col-lg-3">
-                <img src="assets/images/batman-1.png">
+            <div id="container-3" class="col-6 col-md-3 col-xl-3 col-lg-3">
+                    <div id="batman-container" class="row">
+                            <div id="div-batman-img" class="col">
+                                <img id="hero-batman" src="assets/images/batman-1.png">
+                            </div>
+                            <div id="player-stats-3" class="col">
+                                    <div class="row text-center text-warning">
+                                        <div class="col">Health :</div>
+                                        <div class="col">100</div>
+                                    </div>
+                                    <div class="row text-center text-warning">
+                                            <div class="col">Wins :</div>
+                                            <div class="col">0</div>
+                                    </div>
+                                    <div class="row text-center text-warning">
+                                            <div class="col">Power :</div>
+                                            <div class="col">100</div>
+                                        </div>
+                            </div> 
+                    </div>
             </div>
-            <div class="col-6 col-md-3 col-xl-3 col-lg-3">
-                    <img src="assets/images/ironman-2.png">
+            <div id="container-4" class="col-6 col-md-3 col-xl-3 col-lg-3">
+                    <div id="ironman-container" class="row">
+                            <div id="div-ironman-img" class="col">
+                                <img id="hero-ironman" src="assets/images/ironman-2.png">
+                            </div>
+                            <div id="player-stats-4" class="col">
+                                    <div class="row text-center text-warning">
+                                        <div class="col">Health : </div>
+                                        <div class="col">100</div>
+                                    </div>
+                                    <div class="row text-center text-warning">
+                                            <div class="col">Wins : </div>
+                                            <div class="col">0</div>
+                                    </div>
+                                    <div class="row text-center text-warning">
+                                            <div class="col">Power : </div>
+                                            <div class="col">60%</div>
+                                    </div>
+                            </div> 
+                    </div>
             </div>
         </div>
-
-        <div class="row divider border"></div>
-                <!--Players-->
+    </div>
+    <div class="container-fluid">
+        <div class="row div-height">
+            <div class="col-2"></div>
+            <div id="battleHero" class="col-2"></div>
+            <div class="col-4 d-flex justify-content-center">
+                    <button id="btn-abt-attack" type="button" class="btn btn-dark">Attack</button>
+            </div>
+            <div id="battleVillian" class="col-2"></div>
+            <div class="col-2"></div>
+        </div>
+       
+        </div>
 
 
     </div>
-
-    
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="assets/scripts/script.js"></script>
 
     </body>
 

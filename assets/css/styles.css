@@ -1,5 +1,5 @@
 body{
-    background-image: url('../images/battle-5.jpg');
+    background-image: url('../images/fight-bk.jpg');
     font-family: 'Shadows Into Light', cursive;
 }
 
@@ -9,8 +9,12 @@ img{
     cursor:pointer; 
 }
 
-.divider {
-    height: 20rem;
+.div-height {
+    height: 5rem;
+}
+
+#btn-abt-attack {
+    visibility: hidden;
 }
 
 
