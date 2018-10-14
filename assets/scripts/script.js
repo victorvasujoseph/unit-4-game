@@ -18,6 +18,7 @@ var container4 = $("#container-4");
 
 var battleHero = $("#battleHero");
 var battleVillian = $("#battleVillian");
+var audioElement = document.getElementById("audio");
 
 var playerStats = {
         "hero-superman": {
@@ -137,6 +138,7 @@ $('#btn-choose-new').on('click',function(){
 $('img').on("click", function(){
     console.log("img clicked");
     if(gameMode){
+        audioElement.play();
         createFighters(this);
         clearPlayers();
         if(battleVillianSelected === false){
