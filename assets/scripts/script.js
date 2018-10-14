@@ -20,54 +20,67 @@ var battleVillian = $("#battleVillian");
 
 var playerStats = {
         "hero-superman": {
-            name: "Superman",
+            id:"hero-superman",
+            name: "superman",
             health: 100,
             attackPower:20,
-            damage: 5
+            baseattackPower:2,
+            damage: 4
         },
         "hero-deadpool": {
-            name: "Deadpool",
+            id:"hero-deadpool",
+            name: "deadpool",
             health: 100,
             attackPower:12,
-            damage: 7
-        },
-        "hero-batman": {
-            name: "Batman",
-            health: 100,
-            attackPower:33,
-            damage: 2
-        },
-        "hero-ironman": {
-            name: "Iron Man",
-            health: 100,
-            attackPower:15,
+            baseattackPower:2,
             damage: 6
         },
-        "villain-darth": {
-            name: "Darth",
+        "hero-batman": {
+            id:"hero-batman",
+            name: "batman",
+            health: 100,
+            attackPower:33,
+            baseattackPower:3,
+            damage: 9
+        },
+        "hero-ironman": {
+            id:"hero-ironman",
+            name: "ironman",
             health: 100,
             attackPower:15,
+            baseattackPower:2,
+            damage: 3
+        },
+        "villain-darth": {
+            id:"villain-darth",
+            name: "darth",
+            health: 100,
+            attackPower:20,
             damage: 6
         },
         "villain-wolverine": {
-            name: "Wolverine",
+            id:"villain-wolverine",
+            name: "wolverine",
             health: 100,
             attackPower:15,
             damage: 6
         },
         "villain-joker": {
-            name: "Joker",
+            id:"villain-joker",
+            name: "joker",
             health: 100,
             attackPower:35,
             damage: 27
         },
         "villain-hulk": {
+            id:"villain-hulk",
             name: "Hulk",
             health: 100,
-            attackPower:15,
+            attackPower:25,
             damage: 6
         }
 }
+
 
 var clearPlayers = function(){
     container1.empty();
@@ -113,27 +126,48 @@ $('img').on("click", function(){
     }
 });
 
-var setPlayerHealth = function(name,value){
-    playerStats[name].health = value; 
+var setPalyerStats = function(player){
+    console.log(player);
+    var playerID = player.id;
+    playerStats[playerID].health = player.health; 
+    playerStats[playerID].attackPower = player.attackPower; 
 }
 
-var setAttackePower = function(name,value){
-    playerStats[name].attackPower = value; 
+var getPlayerStats = function (id){
+   return playerStats[id];
 }
 
-var getPlayerStats = function (name){
-   return playerStats[name];
+var pushPlayerStats = function (palyer){
+
+    var playerStats = getPlayerStats(palyer.id);
+
+    var healthDivID = "#"+ palyer.id +"-health";
+    var attackPowerID = "#"+ palyer.id+"-attackpower";
+    var damageID = "#" + palyer.id+"-damage";
+
+    $(healthDivID).text("Health :" + playerStats["health"]);
+    $(attackPowerID).text("Power :" + playerStats["attackPower"]);
+    $(damageID).text("Damage :" + playerStats["damage"]);
 }
 
-var startAttack = function (){
+var setCommentary =  function(){
     $('#game-commentary').text('You Hit Him');
-    console.log(playerArray[0]);
-    console.log(playerArray[1]);
+}
 
+var computeAttackStats = function(hero,villian){
+    hero.health = hero.health - (villian.attackPower - hero.damage);
+    villian.health = villian.health - hero.attackPower;
+    hero.attackPower = hero.attackPower * hero.baseattackPower;
+    setPalyerStats(hero);
+    setPalyerStats(villian);
+}
+
+var startAttack = function(){   
     var hero = getPlayerStats(playerArray[0]);
     var villian = getPlayerStats(playerArray[1]);
-    console.log(hero);
-    console.log(villian);
+    computeAttackStats(hero,villian);
+    pushPlayerStats(villian);
+    pushPlayerStats(hero);
 }
 
 $('#btn-abt-attack').on('click',function(){
@@ -163,6 +197,45 @@ var createImageDiv = function(src,divID,divClass){
     return imgDiv;
 }
 
+var createStatsDiv = function(id){
+
+    var playerStats = getPlayerStats(id);
+
+    var parentdivClass = "col-12 text-warning";
+    var parentdivID = id+"-stats";
+
+    var childDivClass = "col";
+    var healthDivID = id+"-health";
+    var attackPowerID = id+"-attackpower";
+    var damageID = id+"-damage";
+
+    var parentDiv = $("<div/>");
+    parentDiv.addClass(parentdivClass);
+    parentDiv.attr("id",parentdivID);
+
+    var healthDiv = $("<div/>");
+    healthDiv.addClass(childDivClass);
+    healthDiv.attr("id",healthDivID);
+    healthDiv.text("Health :" + playerStats["health"]);
+    
+    var attackPowerDiv = $("<div/>");
+    attackPowerDiv.addClass(childDivClass);
+    attackPowerDiv.attr("id",attackPowerID);
+    attackPowerDiv.text("Power :"+ playerStats["attackPower"]);
+
+    var damageDiv = $("<div/>");
+    damageDiv.addClass(childDivClass);
+    damageDiv.attr("id",damageID);
+    damageDiv.text("Damage :"+ playerStats["damage"]);
+
+    parentDiv.append(healthDiv);
+    parentDiv.append(attackPowerDiv);
+    parentDiv.append(damageDiv);
+
+    return parentDiv;
+
+}
+
 var createHulk = function(){
     var src = "assets/images/hulk-1.png";
     var divID = "villain-hulk";
@@ -170,6 +243,7 @@ var createHulk = function(){
 
     var hulkContainer = $('<div id="hulk-container" class="row"></div>');
     hulkContainer.append(createImageDiv(src,divID,divclass));
+    hulkContainer.append(createStatsDiv(divID));
 
     return hulkContainer;
 }
@@ -181,6 +255,7 @@ var createJoker = function(){
 
     var jokerContainer = $('<div id="joker-container" class="row"></div>');
     jokerContainer.append(createImageDiv(src,divID,divclass));
+    jokerContainer.append(createStatsDiv(divID));
 
     return jokerContainer;
 }
@@ -192,7 +267,8 @@ var createWolverine = function(){
 
     var wolverineContainer = $('<div id="wolverine-container" class="row"></div>');
     wolverineContainer.append(createImageDiv(src,divID,divclass));
-
+    wolverineContainer.append(createStatsDiv(divID));
+    
     return wolverineContainer;
 }
 
@@ -203,6 +279,7 @@ var createDarth = function(){
 
     var darthContainer = $('<div id="darth-container" class="row"></div>');
     darthContainer.append(createImageDiv(src,divID,divclass));
+    darthContainer.append(createStatsDiv(divID));
 
     return darthContainer;
 }
