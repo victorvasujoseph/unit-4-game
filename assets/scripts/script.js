@@ -207,6 +207,10 @@ var startAttack = function(){
 }
 
 var createVillian = function() {
+
+    var playerStats = getPlayerStats(playerArray[0]);
+    setCommentary("Choose " + playerStats.name + "'s Opponent !!");
+
     container1.append(createJoker);
     container2.append(createWolverine);
     container3.append(createDarth);
@@ -220,6 +224,7 @@ var createImageDiv = function(src,divID,divClass){
     img.on('click', function() {
         createFighters(this);
         clearPlayers();
+        setCommentary("You Are All Set !!");
     });
         
     var imgDiv = $("<div/>");
