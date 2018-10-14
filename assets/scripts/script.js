@@ -24,33 +24,33 @@ var playerStats = {
             id:"hero-superman",
             name: "Superman",
             health: 100,
-            attackPower:20,
-            baseattackPower:2,
-            damage: 4
+            attackPower:7,
+            baseattackPower:7,
+            damage: 3
         },
         "hero-deadpool": {
             id:"hero-deadpool",
             name: "Deadpool",
             health: 100,
-            attackPower:12,
-            baseattackPower:2,
-            damage: 6
+            attackPower:9,
+            baseattackPower:5,
+            damage: 3
         },
         "hero-batman": {
             id:"hero-batman",
             name: "Batman",
             health: 100,
-            attackPower:33,
-            baseattackPower:3,
-            damage: 9
+            attackPower:10,
+            baseattackPower:9,
+            damage: 4
         },
         "hero-ironman": {
             id:"hero-ironman",
             name: "Ironman",
             health: 100,
-            attackPower:15,
-            baseattackPower:2,
-            damage: 3
+            attackPower:2,
+            baseattackPower:5,
+            damage: 1
         },
         "villain-darth": {
             id:"villain-darth",
@@ -129,6 +129,11 @@ $('#btn-abt-attack').on('click',function(){
     }
 });
 
+$('#btn-choose-new').on('click',function(){
+    chooseNewVillian()
+    gameMode = true;
+});
+
 $('img').on("click", function(){
     console.log("img clicked");
     if(gameMode){
@@ -188,7 +193,7 @@ var setCommentary =  function(text){
 var computeAttackStats = function(hero,villian){
     hero.health = hero.health - (villian.attackPower - hero.damage);
     villian.health = villian.health - hero.attackPower;
-    hero.attackPower = hero.attackPower * hero.baseattackPower;
+    hero.attackPower = hero.attackPower + hero.baseattackPower;
     setPalyerStats(hero);
     setPalyerStats(villian);
 }
@@ -202,11 +207,36 @@ var startAttack = function(){
     pushPlayerStats(hero.id);
     setCommentary(hero.name +" attacks " + villian.name + " for " + hero.attackPower + " damage and " + villian.name +
     " attacks back for " + villian.attackPower + " damage !!");
-    
+
     if(!checkWin(hero,villian)){
         gameMode = false;
+        $('#btn-abt-attack').css("visibility","hidden");
+
+        $('#btn-choose-new').text('Play Another Opponent?');
+        $('#btn-choose-new').css("visibility","visible");
     }
 
+}
+
+var chooseNewVillian = function(){
+    clearvillian();
+    restorehealth(playerArray[0]);
+    createVillian();
+}
+
+var restorehealth = function(playerID){
+    var player = getPlayerStats(playerID);
+    player.health = 100;
+    setPalyerStats(player);
+    pushPlayerStats(player.id);
+}
+
+var clearvillian = function(){
+    battleVillian.empty();
+    var villain = playerArray.pop();
+    console.log("popped" + villain);
+    battleVillianSelected = false;
+    $('#btn-choose-new').css("visibility","hidden");
 }
 
 var createVillian = function() {
