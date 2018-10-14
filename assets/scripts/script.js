@@ -70,7 +70,7 @@ var playerStats = {
             id:"villain-joker",
             name: "Joker",
             health: 100,
-            attackPower:35,
+            attackPower:55,
             damage: 27
         },
         "villain-hulk": {
@@ -149,7 +149,7 @@ var checkWin = function(hero,villian){
     console.log(villianStats.health);
 
     if(heroStats.health < 0){
-        setCommentary(villianStats.name + " Defeated " + heroStats.name + " Better Luck next time");
+        setCommentary(villianStats.name + " Defeated " + heroStats.name + " - Better Luck next time");
         return false; 
     } else if(villianStats.health < 0){
         setCommentary(heroStats.name + " Defeated " + villianStats.name + " You Win !!");
@@ -200,6 +200,9 @@ var startAttack = function(){
     computeAttackStats(hero,villian);
     pushPlayerStats(villian.id);
     pushPlayerStats(hero.id);
+    setCommentary(hero.name +" attacks " + villian.name + " for " + hero.attackPower + " damage and " + villian.name +
+    " attacks back for " + villian.attackPower + " damage !!");
+    
     if(!checkWin(hero,villian)){
         gameMode = false;
     }
