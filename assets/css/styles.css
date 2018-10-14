@@ -13,14 +13,20 @@ img{
     height: 5rem;
 }
 
+.row{
+    font-family: 'Shadows Into Light', cursive;
+    font-size:30px;
+}
+
 #btn-abt-attack {
     visibility: hidden;
     font-size: 30px;
-    color:yellow;
+    font-family: 'Shadows Into Light', cursive;
 }
 
 #game-commentary{
     font-size: 40px;
+    font-family: 'Shadows Into Light', cursive;
 }
 
 
