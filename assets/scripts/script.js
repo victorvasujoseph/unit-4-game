@@ -222,11 +222,11 @@ var startAttack = function(){
 
 var chooseNewVillian = function(){
     clearvillian();
-    restorehealth(playerArray[0]);
+    restoreHealth(playerArray[0]);
     createVillian();
 }
 
-var restorehealth = function(playerID){
+var restoreHealth = function(playerID){
     var player = getPlayerStats(playerID);
     player.health = 100;
     setPalyerStats(player);
@@ -235,6 +235,7 @@ var restorehealth = function(playerID){
 
 var clearvillian = function(){
     battleVillian.empty();
+    restoreHealth(playerArray[1]);
     var villain = playerArray.pop();
     console.log("popped" + villain);
     battleVillianSelected = false;
